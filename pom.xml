@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.payconiq.payment</groupId>
+    <artifactId>merchant-payment-api-v3</artifactId>
+    <version>3.0.0</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <!-- Dependency versions -->
+        <jackson.version>[2.9.2,)</jackson.version>
+        <javax-validation.version>2.0.0.Final</javax-validation.version>
+        <swagger.codegen.version>2.3.1</swagger.codegen.version>
+        <swagger.version>1.5.6</swagger.version>
+        <spring.version>4.3.13.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.scm.id>gitlab</project.scm.id>
+        <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
+        <jackson.dataformat.version>2.9.8</jackson.dataformat.version>
+    </properties>
+
+    <!--<scm>
+        <connection>scm:git:https://gitlab.payconiq.io/DEV/payment/qrcode-service-api.git</connection>
+        <tag>qrcode-api-v1-1.0-SNAPSHOT</tag>
+    </scm>-->
+
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>artifactory.payconiq.io-releases</name>
+            <url>https://artifactory.payconiq.io/artifactory/maven-payconiq-private</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>artifactory.payconiq.io-snapshots</name>
+            <url>https://artifactory.payconiq.io/artifactory/maven-payconiq-private</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencies>
+        <!-- Third-party Dependencies -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${javax-validation.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>${javax-annotation-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson.dataformat.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.dataformat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.dataformat.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.joschi.jackson</groupId>
+            <artifactId>jackson-datatype-threetenbp</artifactId>
+            <version>2.6.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>${swagger.codegen.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-terminal-service-client</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/merchant-payment-apis.yaml</inputSpec>
+                            <modelPackage>com.payconiq.payment.merchant.dtos</modelPackage>
+                            <apiPackage>com.payconiq.payment.merchant</apiPackage>
+                            <invokerPackage>com.payconiq.payment.merchant.invoker</invokerPackage>
+                            <verbose>false</verbose>
+                            <output>${project.build.directory}/generated-sources/swagger</output>
+                            <language>java</language>
+                            <library>resttemplate</library>
+                            <configOptions>
+                                <java8>false</java8>
+                                <interfaceOnly>true</interfaceOnly>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useTags>false</useTags>
+                            </configOptions>
+                            <environmentVariables>
+                                <models/>
+                                <apis/>
+                            </environmentVariables>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
