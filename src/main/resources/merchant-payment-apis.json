@@ -111,6 +111,13 @@
             "minLength": 24,
             "maxLength": 24,
             "description": "The unique Payconiq identifier of a payment as provided by the create payment service."
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "type": "string",
+            "required": true,
+            "default": "application/json"
           }
         ],
         "summary": "Get Payment Details"
@@ -177,6 +184,13 @@
             "maxLength": 24,
             "minLength": 24,
             "description": "The unique identifier of a payment as provided by the create payment service."
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "type": "string",
+            "default": "application/json",
+            "required": true
           }
         ]
       }
@@ -341,6 +355,13 @@
                 "reference": "1234568"
               }
             }
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "type": "string",
+            "default": "application/json",
+            "required": true
           }
         ]
       }
@@ -462,6 +483,13 @@
                 "bulkId": "Bulk-1-200"
               }
             }
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "type": "string",
+            "default": "application/json",
+            "required": true
           }
         ],
         "operationId": "create",
@@ -521,6 +549,14 @@
             "required": true,
             "description": "The User-Agent request header contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent.",
             "default": "Payconiq"
+          },
+          {
+            "in": "header",
+            "name": "Content-type",
+            "type": "string",
+            "required": true,
+            "description": "The Content-Type entity header is used to indicate the media type of the resource.",
+            "default": "application/json"
           }
         ],
         "summary": "The Payconiq Callback",
@@ -603,6 +639,12 @@
             "description": "The unique identifier of a payment as provided by the create payment service.",
             "maxLength": 24,
             "minLength": 24
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "type": "string",
+            "default": "application/json"
           }
         ],
         "summary": "Get Refund IBAN"
