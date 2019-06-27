@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: Payconiq Payment V3 API Reference
+  title: Payconiq Merchant Payment V3 API Reference
   version: 3.0.0
   description: |-
     The main API documentation can be found on the [Payconiq Developer Portal.](https://developer.payconiq.com/online-payments-dock/)

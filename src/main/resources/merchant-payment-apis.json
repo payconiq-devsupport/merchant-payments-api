@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Payconiq Payment V3 API Reference",
+    "title": "Payconiq Merchant Payment V3 API Reference",
     "version": "3.0.0",
     "description": "The main API documentation can be found on the [Payconiq Developer Portal.](https://developer.payconiq.com/online-payments-dock/)\n\nThe Payconiq API is organized around REST and uses HTTP response codes to indicate API errors. In addition, standard HTTP features such as header authentication and HTTP verbs which are understood by off the shelf HTTP clients across all the programming languages are also used. JSON bodies are used in requests and returned in relevant API responses, including errors. APIs intended to support the merchant/partner's payment flow on creation, cancelation, search and refunds.\n\nProd Url: [https://api.payconiq.com/v3](https://api.payconiq.com/v3)\n\nEXT Url: [https://api.ext.payconiq.com/v3](https://api.ext.payconiq.com/v3)",
     "contact": {
