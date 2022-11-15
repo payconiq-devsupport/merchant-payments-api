@@ -21,7 +21,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.scm.id>gitlab</project.scm.id>
         <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
-        <jackson.dataformat.version>2.10.0.pr1</jackson.dataformat.version>
+        <jackson.dataformat.version>2.12.7.1</jackson.dataformat.version>
     </properties>
 
     <!--<scm>
